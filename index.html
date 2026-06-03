@@ -603,6 +603,230 @@
   }
   .lightbox-close:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
 
+  /* ── MEET TYRA ── */
+  #meet-tyra { padding: 120px 0; background: var(--white); }
+  .meet-tyra-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .tyra-photo-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tyra-photo-placeholder {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 3/4;
+    background: linear-gradient(160deg, var(--beige) 0%, var(--sand) 100%);
+    border: 2px dashed rgba(123,175,110,0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .tyra-photo-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(123,175,110,0.04) 20px,
+      rgba(123,175,110,0.04) 40px
+    );
+  }
+  .placeholder-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(123,175,110,0.15);
+    border: 1px solid rgba(123,175,110,0.35);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--taupe);
+    position: relative;
+  }
+  .placeholder-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    text-align: center;
+    padding: 0 24px;
+    position: relative;
+  }
+  .placeholder-sub {
+    font-size: 0.75rem;
+    color: rgba(90,122,86,0.6);
+    text-align: center;
+    padding: 0 28px;
+    position: relative;
+  }
+  .tyra-photo-wrap::after {
+    content: '';
+    position: absolute;
+    top: 20px; left: -20px;
+    bottom: -20px; right: 20px;
+    border: 1px solid rgba(123,175,110,0.3);
+    z-index: -1;
+    max-width: 420px;
+  }
+  .tyra-content .section-label { display: block; }
+  .tyra-content h2 { margin-bottom: 8px; }
+  .tyra-name-title {
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    display: block;
+  }
+  .tyra-bio { color: var(--text-light); font-size: 0.95rem; line-height: 1.95; margin-bottom: 16px; }
+  .tyra-credentials {
+    display: flex; flex-direction: column; gap: 12px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--sand);
+  }
+  .tyra-credential {
+    display: flex; align-items: center; gap: 14px;
+    font-size: 0.88rem; color: var(--text);
+  }
+  .cred-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0;
+  }
+  .tyra-quote {
+    margin-top: 36px;
+    padding: 28px 32px;
+    background: var(--beige);
+    border-left: 3px solid var(--gold);
+    position: relative;
+  }
+  .tyra-quote p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--brown);
+    line-height: 1.75;
+  }
+  .tyra-quote cite {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--taupe);
+  }
+
+  /* ── MOBILE MASSAGE ── */
+  #mobile-massage { padding: 120px 0; background: var(--beige); }
+  .mobile-massage-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .mobile-massage-content .section-label { display: block; }
+  .mobile-massage-content h2 { margin-bottom: 20px; }
+  .mobile-massage-content > p { color: var(--text-light); font-size: 0.95rem; line-height: 1.95; margin-bottom: 40px; }
+  .mobile-benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .mobile-benefit {
+    background: var(--white);
+    padding: 20px 20px 18px;
+    border-bottom: 2px solid var(--gold);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .mobile-benefit:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(46,82,41,0.1); }
+  .mobile-benefit-icon { font-size: 1.4rem; margin-bottom: 10px; display: block; }
+  .mobile-benefit h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--brown); margin-bottom: 4px; font-weight: 400; }
+  .mobile-benefit p { font-size: 0.8rem; color: var(--text-light); line-height: 1.6; }
+  .mobile-massage-visual {
+    position: relative;
+    height: 560px;
+  }
+  .mobile-massage-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .mobile-badge {
+    position: absolute;
+    bottom: -24px; right: -24px;
+    width: 140px; height: 140px;
+    background: var(--brown);
+    border-radius: 50%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 16px;
+    box-shadow: 0 16px 48px rgba(46,82,41,0.3);
+  }
+  .mobile-badge span:first-child {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    color: var(--beige);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .mobile-badge span:last-child {
+    font-size: 0.62rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  /* ── BOOKING LOCATION FIELDS ── */
+  .location-toggle {
+    display: flex; gap: 0; border: 1px solid var(--sand);
+    overflow: hidden;
+  }
+  .loc-btn {
+    flex: 1; padding: 14px 12px;
+    background: var(--beige);
+    border: none; cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--taupe);
+    transition: all 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .loc-btn.active { background: var(--brown); color: var(--beige); }
+  .loc-btn:not(.active):hover { background: var(--sand); }
+  .mobile-fields {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    background: rgba(123,175,110,0.07);
+    border: 1px solid rgba(123,175,110,0.25);
+    border-top: 3px solid var(--gold);
+    animation: fadeIn 0.35s ease;
+  }
+  .mobile-fields.show { display: flex; }
+  .mobile-fields-label {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--brown); font-weight: 500; margin-bottom: -4px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .mobile-fields-label::after {
+    content: '';
+    flex: 1; height: 1px;
+    background: rgba(123,175,110,0.3);
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
   /* ── BOOKING ── */
   #booking { padding: 120px 0; background: var(--white); }
   .booking-grid {
@@ -801,6 +1025,12 @@
     .why-us-image { height: 420px; }
     .testimonial-card { flex: 0 0 calc(80% - 14px); }
     .booking-grid { grid-template-columns: 1fr; gap: 52px; }
+    .meet-tyra-grid { grid-template-columns: 1fr; gap: 52px; }
+    .tyra-photo-placeholder { max-width: 100%; }
+    .tyra-photo-wrap::after { display: none; }
+    .mobile-massage-inner { grid-template-columns: 1fr; gap: 52px; }
+    .mobile-massage-visual { height: 380px; }
+    .mobile-badge { bottom: -16px; right: 16px; }
   }
 
   @media (max-width: 768px) {
@@ -819,6 +1049,7 @@
     .why-us-image::after { display: none; }
     .mobile-menu { padding: 28px 24px 36px; }
     #cta-final { padding: 80px 24px; background-attachment: scroll; }
+    .mobile-benefits-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 480px) {
@@ -836,8 +1067,8 @@
   <a href="#" class="nav-logo">Tyra<span>Place</span></a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#benefits">Benefits</a></li>
-    <li><a href="#why-us">About</a></li>
+    <li><a href="#mobile-massage">Mobile</a></li>
+    <li><a href="#meet-tyra">About</a></li>
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#gallery">Gallery</a></li>
   </ul>
@@ -849,8 +1080,8 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a href="#services" class="mobile-link">Services</a>
-  <a href="#benefits" class="mobile-link">Benefits</a>
-  <a href="#why-us" class="mobile-link">About</a>
+  <a href="#mobile-massage" class="mobile-link">Mobile Massage</a>
+  <a href="#meet-tyra" class="mobile-link">Meet Tyra</a>
   <a href="#testimonials" class="mobile-link">Reviews</a>
   <a href="#gallery" class="mobile-link">Gallery</a>
   <a href="#booking" class="mobile-link">Book Now</a>
@@ -894,6 +1125,173 @@
   </div>
 </div>
 
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div>
+        <div class="booking-header fade-up">
+          <span class="section-label">Reserve Your Spot</span>
+          <h2>Book Your Session</h2>
+          <p>Fill out the form below and we'll confirm your appointment within 24 hours.</p>
+        </div>
+        <form
+          class="booking-form fade-up"
+          action="https://formsubmit.co/forevermine9911@gmail.com"
+          method="POST"
+          style="transition-delay:0.1s">
+          <input type="hidden" name="_subject" value="New Tyra Place Booking">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://tyraplace.vercel.app/">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="service">Preferred Service</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="Deep Tissue Massage">Deep Tissue Massage</option>
+                <option value="Swedish Massage">Swedish Massage</option>
+                <option value="Relaxation Massage">Relaxation Massage</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- APPOINTMENT LOCATION -->
+          <div class="form-group">
+            <label>Appointment Location</label>
+            <div class="location-toggle">
+              <button type="button" class="loc-btn active" id="btnStudio" onclick="setLocation('studio')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                Studio Visit
+              </button>
+              <button type="button" class="loc-btn" id="btnMobile" onclick="setLocation('mobile')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Mobile Service
+              </button>
+            </div>
+            <input type="hidden" name="appointment_location" id="locationHidden" value="Studio Visit">
+          </div>
+
+          <!-- MOBILE ADDRESS FIELDS -->
+          <div class="mobile-fields" id="mobileFields">
+            <span class="mobile-fields-label">Service Address</span>
+            <div class="form-group">
+              <label for="streetAddress">Street Address</label>
+              <input type="text" id="streetAddress" name="street_address" placeholder="123 Main Street">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="City">
+              </div>
+              <div class="form-group">
+                <label for="zipCode">ZIP Code</label>
+                <input type="text" id="zipCode" name="zip_code" placeholder="00000" maxlength="10">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="unitNumber">Building / Unit #</label>
+                <input type="text" id="unitNumber" name="unit_number" placeholder="Apt 4B, Suite 200, etc.">
+              </div>
+              <div class="form-group">
+                <label for="parking">Parking Information</label>
+                <input type="text" id="parking" name="parking_info" placeholder="Street parking, driveway, etc.">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Preferred Date</label>
+              <input type="date" id="date" name="preferred_date" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Preferred Time</label>
+              <select id="time" name="preferred_time">
+                <option value="">Select a time</option>
+                <option value="9:00 AM">9:00 AM</option>
+                <option value="10:00 AM">10:00 AM</option>
+                <option value="11:00 AM">11:00 AM</option>
+                <option value="12:00 PM">12:00 PM</option>
+                <option value="1:00 PM">1:00 PM</option>
+                <option value="2:00 PM">2:00 PM</option>
+                <option value="3:00 PM">3:00 PM</option>
+                <option value="4:00 PM">4:00 PM</option>
+                <option value="5:00 PM">5:00 PM</option>
+                <option value="6:00 PM">6:00 PM</option>
+                <option value="7:00 PM">7:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Notes or Special Requests</label>
+            <textarea id="notes" name="notes" placeholder="Any areas of concern, allergies, or special requests..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit"><span>Book Appointment</span></button>
+        </form>
+      </div>
+      <div class="contact-info fade-up" style="transition-delay:0.2s">
+        <h3>Get in Touch</h3>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:5551234567">(555) 123-4567</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@tyraplace.com">info@tyraplace.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>
+              Monday – Friday: 9:00 AM – 8:00 PM<br>
+              Saturday: 10:00 AM – 6:00 PM<br>
+              Sunday: By Appointment
+            </p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>Private studio address provided<br>upon booking confirmation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
@@ -925,6 +1323,48 @@
         </div>
         <h3>Relaxation<br>Massage</h3>
         <p>A soothing full-body experience focused on comfort, tranquility, and complete mental and physical relaxation in a serene, private sanctuary.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE MASSAGE -->
+<section id="mobile-massage">
+  <div class="container">
+    <div class="mobile-massage-inner">
+      <div class="mobile-massage-content fade-up">
+        <span class="section-label">We Come To You</span>
+        <h2>In-Home Massage<br>Service</h2>
+        <p>Enjoy a professional massage experience in the comfort of your home, hotel, or office. Tyra Place brings relaxation directly to you — complete with a portable massage table, fresh linens, and a fully personalized wellness experience tailored to your space and schedule.</p>
+        <div class="mobile-benefits-grid">
+          <div class="mobile-benefit">
+            <span class="mobile-benefit-icon">🏠</span>
+            <h4>No Travel Required</h4>
+            <p>Relax without the commute — we bring everything to you</p>
+          </div>
+          <div class="mobile-benefit">
+            <span class="mobile-benefit-icon">🛋️</span>
+            <h4>Your Own Space</h4>
+            <p>Unwind in the comfort and privacy of your environment</p>
+          </div>
+          <div class="mobile-benefit">
+            <span class="mobile-benefit-icon">📅</span>
+            <h4>Flexible Scheduling</h4>
+            <p>Morning, evening, or weekend — we work around your life</p>
+          </div>
+          <div class="mobile-benefit">
+            <span class="mobile-benefit-icon">💼</span>
+            <h4>Busy Professionals</h4>
+            <p>Ideal for those who value their time and wellbeing equally</p>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-massage-visual fade-up" style="transition-delay:0.15s">
+        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=900&q=80" alt="Mobile massage service setup" loading="lazy">
+        <div class="mobile-badge">
+          <span>We Come<br>To You</span>
+          <span>Mobile Service</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1024,6 +1464,41 @@
   </div>
 </section>
 
+<!-- MEET TYRA -->
+<section id="meet-tyra">
+  <div class="container">
+    <div class="meet-tyra-grid">
+      <div class="tyra-photo-wrap fade-up">
+        <div class="tyra-photo-placeholder">
+          <div class="placeholder-icon">
+            <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <span class="placeholder-label">Tyra's Photo</span>
+          <span class="placeholder-sub">Replace with your professional portrait</span>
+        </div>
+      </div>
+      <div class="tyra-content fade-up" style="transition-delay:0.15s">
+        <span class="section-label">Your Therapist</span>
+        <h2>Meet Tyra</h2>
+        <span class="tyra-name-title">Licensed Massage Therapist &amp; Wellness Specialist</span>
+        <p class="tyra-bio">Hi, I'm Tyra — a licensed massage therapist with a deep passion for helping people feel their very best. I founded Tyra Place because I believe everyone deserves access to high-quality, personalized therapeutic care in a space that feels safe, calm, and welcoming.</p>
+        <p class="tyra-bio">My approach blends proven therapeutic techniques with genuine client-centered care. Every session is tailored to your body, your goals, and how you're feeling that day — because no two people, and no two sessions, are ever the same.</p>
+        <p class="tyra-bio">Whether you're recovering from muscle tension, managing chronic stress, or simply craving a moment of deep rest, I'm here to support your wellness journey with professionalism, warmth, and expertise.</p>
+        <div class="tyra-credentials">
+          <div class="tyra-credential"><div class="cred-dot"></div>Licensed &amp; Certified Massage Therapist</div>
+          <div class="tyra-credential"><div class="cred-dot"></div>Specialization in Deep Tissue &amp; Therapeutic Techniques</div>
+          <div class="tyra-credential"><div class="cred-dot"></div>Years of hands-on client care experience</div>
+          <div class="tyra-credential"><div class="cred-dot"></div>Continuing education in wellness &amp; bodywork</div>
+        </div>
+        <div class="tyra-quote">
+          <p>"My mission is simple — to help you leave every session feeling better than when you walked in."</p>
+          <cite>— Tyra, Founder of Tyra Place</cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="container">
@@ -1039,7 +1514,7 @@
           <div class="testimonial-author">
             <div class="author-avatar">S</div>
             <div>
-              <div class="author-name">Jay T.</div>
+              <div class="author-name">Sarah M.</div>
               <div class="author-tag">Verified Client</div>
             </div>
           </div>
@@ -1050,7 +1525,7 @@
           <div class="testimonial-author">
             <div class="author-avatar">J</div>
             <div>
-              <div class="author-name">Monroe R.</div>
+              <div class="author-name">Jessica R.</div>
               <div class="author-tag">Verified Client</div>
             </div>
           </div>
@@ -1133,130 +1608,6 @@
   <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
 </div>
 
-<!-- BOOKING -->
-<section id="booking">
-  <div class="container">
-    <div class="booking-grid">
-      <div>
-        <div class="booking-header fade-up">
-          <span class="section-label">Reserve Your Spot</span>
-          <h2>Book Your Session</h2>
-          <p>Fill out the form below and we'll confirm your appointment shortly.</p>
-        </div>
-        <form
-  class="booking-form"
-  action="https://formsubmit.co/forevermine9911@gmail.com"
-  method="POST">
-         <input type="hidden" name="_subject" value="New Tyra Place Booking">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
-         <input type="hidden" name="_next" value="https://tyraplace.vercel.app/">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fullName">Full Name</label>
-              <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
-            </div>
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="your@email.com" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" id="phone" name="phone" placeholder="(734) 706-3920">
-            </div>
-            <div class="form-group">
-              <label for="service">Preferred Service</label>
-              <select id="service" name="service" required>
-                <option value="">Select a service</option>
-                <option value="deep-tissue">Deep Tissue Massage</option>
-                <option value="swedish">Swedish Massage</option>
-                <option value="relaxation">Relaxation Massage</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="date">Preferred Date</label>
-              <input type="date" id="date" name="date" required>
-            </div>
-            <div class="form-group">
-              <label for="time">Preferred Time</label>
-              <select id="time" name="time">
-                <option value="">Select a time</option>
-                <option value="9am">9:00 AM</option>
-                <option value="10am">10:00 AM</option>
-                <option value="11am">11:00 AM</option>
-                <option value="12pm">12:00 PM</option>
-                <option value="1pm">1:00 PM</option>
-                <option value="2pm">2:00 PM</option>
-                <option value="3pm">3:00 PM</option>
-                <option value="4pm">4:00 PM</option>
-                <option value="5pm">5:00 PM</option>
-                <option value="6pm">6:00 PM</option>
-                <option value="7pm">7:00 PM</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="notes">Notes or Special Requests</label>
-            <textarea id="notes" name="notes" placeholder="Any areas of concern, allergies, or special requests..."></textarea>
-          </div>
-          <button type="submit" class="btn-submit"><span>Book Appointment</span></button>
-          <div class="form-success" id="formSuccess">
-            <h4>Thank you for booking!</h4>
-            <p>We've received your request and will confirm your appointment within 24 hours.</p>
-          </div>
-        </form>
-      </div>
-      <div class="contact-info fade-up" style="transition-delay:0.2s">
-        <h3>Get in Touch</h3>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
-          </div>
-          <div>
-            <h4>Phone</h4>
-            <p><a href="tel:7347063920">(734) 706-3920</a></p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          </div>
-          <div>
-            <h4>Email</h4>
-            <p><a href="mailto:info@tyraplace.com">info@tyraplace.com</a></p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          </div>
-          <div>
-            <h4>Business Hours</h4>
-            <p>
-              Monday – Friday: 9:00 AM – 8:00 PM<br>
-              Saturday: 10:00 AM – 6:00 PM<br>
-              Sunday: By Appointment
-            </p>
-          </div>
-        </div>
-        <div class="contact-item">
-          <div class="contact-icon">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          </div>
-          <div>
-            <h4>Location</h4>
-            <p>Private studio address provided<br>upon booking confirmation</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FINAL CTA -->
 <section id="cta-final">
   <div class="fade-up">
@@ -1290,8 +1641,8 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="#services">Services</a></li>
-          <li><a href="#benefits">Benefits</a></li>
-          <li><a href="#why-us">About Us</a></li>
+          <li><a href="#mobile-massage">Mobile Massage</a></li>
+          <li><a href="#meet-tyra">Meet Tyra</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="#gallery">Gallery</a></li>
           <li><a href="#booking">Book Now</a></li>
@@ -1433,23 +1784,30 @@ document.getElementById('lightboxClose').addEventListener('click', closeLightbox
 lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 
-// ── BOOKING FORM ──
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const btn = this.querySelector('.btn-submit');
-  btn.disabled = true;
-  btn.querySelector('span').textContent = 'Sending…';
-  setTimeout(() => {
-    document.getElementById('formSuccess').classList.add('show');
-    btn.querySelector('span').textContent = 'Sent!';
-    this.reset();
-    setTimeout(() => {
-      btn.disabled = false;
-      btn.querySelector('span').textContent = 'Book Appointment';
-      document.getElementById('formSuccess').classList.remove('show');
-    }, 6000);
-  }, 1200);
-});
+// ── LOCATION TOGGLE ──
+function setLocation(type) {
+  const mobileFields = document.getElementById('mobileFields');
+  const btnStudio = document.getElementById('btnStudio');
+  const btnMobile = document.getElementById('btnMobile');
+  const locationHidden = document.getElementById('locationHidden');
+  if (type === 'mobile') {
+    mobileFields.classList.add('show');
+    btnMobile.classList.add('active');
+    btnStudio.classList.remove('active');
+    locationHidden.value = 'Mobile Service';
+    document.getElementById('streetAddress').required = true;
+    document.getElementById('city').required = true;
+    document.getElementById('zipCode').required = true;
+  } else {
+    mobileFields.classList.remove('show');
+    btnStudio.classList.add('active');
+    btnMobile.classList.remove('active');
+    locationHidden.value = 'Studio Visit';
+    document.getElementById('streetAddress').required = false;
+    document.getElementById('city').required = false;
+    document.getElementById('zipCode').required = false;
+  }
+}
 
 // ── SCROLL TO TOP ──
 document.getElementById('scrollTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
