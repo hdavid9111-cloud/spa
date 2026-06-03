@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tyra Place – Professional massage therapy studio offering therapeutic and relaxation treatments in a private, upscale environment. Book your session today.">
+<meta name="keywords" content="massage therapy, deep tissue massage, Swedish massage, relaxation massage, spa, wellness">
+<title>Tyra Place | Therapeutic Massage & Wellness Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sand: #C8D8C4;
+    --beige: #F0F5EE;
+    --taupe: #5A7A56;
+    --brown: #2E5229;
+    --gold: #7BAF6E;
+    --gold-light: #A3C99A;
+    --dark: #182E15;
+    --white: #F7FAF6;
+    --text: #1C3319;
+    --text-light: #4A6E46;
+    --radius: 2px;
+    --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    background: var(--white);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.7;
+  }
+
+  /* ── UTILITY ── */
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: block;
+  }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', serif; font-weight: 400; line-height: 1.15; }
+  h2 { font-size: clamp(2.2rem, 4vw, 3.4rem); color: var(--brown); }
+
+  .fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 40px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background var(--transition), box-shadow var(--transition);
+  }
+  nav.scrolled {
+    background: rgba(240, 245, 238, 0.97);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(90, 122, 86, 0.18);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color var(--transition);
+  }
+  nav.scrolled .nav-logo { color: var(--brown); }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color var(--transition);
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 1px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+    transform-origin: left;
+  }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  nav.scrolled .nav-links a { color: var(--taupe); }
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: var(--white);
+    padding: 10px 28px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all var(--transition);
+  }
+  .nav-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+  nav.scrolled .nav-cta { border-color: var(--taupe); color: var(--brown); }
+  nav.scrolled .nav-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none; border: none;
+  }
+  .hamburger span {
+    display: block; width: 26px; height: 1.5px;
+    background: var(--white);
+    transition: all 0.3s ease;
+  }
+  nav.scrolled .hamburger span { background: var(--brown); }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(240, 245, 238, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 32px 40px 40px;
+    z-index: 999;
+    flex-direction: column;
+    gap: 0;
+    border-bottom: 1px solid var(--sand);
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.35s ease;
+  }
+  .mobile-menu.open { display: flex; transform: translateY(0); opacity: 1; pointer-events: all; }
+  .mobile-menu a {
+    font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--taupe); text-decoration: none;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(200, 216, 196, 0.5);
+    transition: color 0.3s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg, rgba(18,40,15,0.75) 0%, rgba(46,82,41,0.48) 50%, rgba(18,40,15,0.68) 100%),
+      url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1800&q=80') center/cover no-repeat;
+  }
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at center bottom, rgba(123,175,110,0.1) 0%, transparent 65%);
+  }
+  .hero-content {
+    position: relative;
+    text-align: center;
+    color: var(--white);
+    padding: 0 24px;
+    max-width: 780px;
+  }
+  .hero-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 1.6rem;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 0.3s forwards;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.2rem, 8vw, 6.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 1.8rem;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 0.5s forwards;
+  }
+  .hero-title em { font-style: italic; color: var(--gold-light); }
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    max-width: 540px;
+    margin: 0 auto 2.8rem;
+    line-height: 1.8;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 0.7s forwards;
+  }
+  .hero-btns {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 0.9s forwards;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--dark);
+    border: none;
+    padding: 16px 44px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.73rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(123,175,110,0.35); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.55);
+    padding: 16px 44px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.73rem;
+    font-weight: 400;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all var(--transition);
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease 1.2s forwards;
+  }
+  .hero-scroll span {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .scroll-line {
+    width: 1px; height: 48px;
+    background: linear-gradient(to bottom, rgba(201,166,107,0.8), transparent);
+    animation: scrollPulse 2s ease infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(0.6); }
+  }
+
+  @keyframes fadeSlideUp {
+    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(28px); }
+  }
+
+  /* ── INTRO STRIP ── */
+  .intro-strip {
+    background: var(--brown);
+    padding: 28px 40px;
+    display: flex; justify-content: center; gap: 64px; flex-wrap: wrap;
+  }
+  .intro-item {
+    display: flex; align-items: center; gap: 14px;
+    color: rgba(245,239,232,0.85);
+  }
+  .intro-item svg { color: var(--gold); flex-shrink: 0; }
+  .intro-item p { font-size: 0.78rem; letter-spacing: 0.1em; }
+
+  /* ── SERVICES ── */
+  #services { padding: 120px 0; background: var(--white); }
+  .services-header { text-align: center; margin-bottom: 70px; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 28px;
+  }
+  .service-card {
+    background: var(--beige);
+    padding: 52px 44px 48px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.45s ease, box-shadow 0.45s ease;
+    cursor: default;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 32px 64px rgba(92, 70, 56, 0.14);
+  }
+  .service-icon {
+    width: 56px; height: 56px;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 28px;
+    color: var(--dark);
+  }
+  .service-card h3 {
+    font-size: 1.7rem;
+    color: var(--brown);
+    margin-bottom: 16px;
+  }
+  .service-card p { color: var(--text-light); font-size: 0.92rem; line-height: 1.8; }
+  .service-number {
+    position: absolute;
+    top: 24px; right: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    color: rgba(201,166,107,0.12);
+    line-height: 1;
+    user-select: none;
+  }
+
+  /* ── BENEFITS ── */
+  #benefits {
+    padding: 120px 0;
+    background: linear-gradient(160deg, #2E5229 0%, #182E15 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  #benefits::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%237BAF6E' fill-opacity='0.05'%3E%3Cpath d='M40 40m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+  }
+  .benefits-header { text-align: center; margin-bottom: 70px; }
+  .benefits-header h2 { color: var(--beige); }
+  .benefits-header .section-label { color: var(--gold); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 24px;
+    position: relative;
+  }
+  .benefit-item {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(123,175,110,0.22);
+    padding: 36px 28px;
+    text-align: center;
+    transition: all 0.4s ease;
+  }
+  .benefit-item:hover {
+    background: rgba(123,175,110,0.12);
+    border-color: var(--gold);
+    transform: translateY(-4px);
+  }
+  .benefit-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+    filter: drop-shadow(0 0 8px rgba(123,175,110,0.5));
+  }
+  .benefit-item h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    color: #D6EDD2;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+  .benefit-item p { font-size: 0.8rem; color: rgba(200,216,196,0.65); }
+
+  /* ── WHY US ── */
+  #why-us { padding: 120px 0; background: var(--beige); }
+  .why-us-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .why-us-image {
+    position: relative;
+    height: 580px;
+  }
+  .why-us-image img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+  .why-us-image::after {
+    content: '';
+    position: absolute;
+    top: 24px; right: -24px;
+    bottom: -24px; left: 24px;
+    border: 1px solid rgba(123,175,110,0.4);
+    z-index: -1;
+  }
+  .why-us-content .section-label { display: block; }
+  .why-us-content h2 { margin-bottom: 20px; }
+  .why-us-content > p { color: var(--text-light); margin-bottom: 40px; line-height: 1.9; }
+  .why-features { list-style: none; display: flex; flex-direction: column; gap: 18px; }
+  .why-feature {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px 24px;
+    background: var(--white);
+    border-left: 3px solid var(--gold);
+    transition: transform 0.3s ease;
+  }
+  .why-feature:hover { transform: translateX(6px); }
+  .feature-check {
+    width: 24px; height: 24px; flex-shrink: 0;
+    background: var(--gold);
+    color: var(--dark);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .why-feature p { font-size: 0.9rem; color: var(--text); }
+  .why-feature strong { color: var(--brown); font-weight: 500; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { padding: 120px 0; background: var(--white); overflow: hidden; }
+  .testimonials-header { text-align: center; margin-bottom: 60px; }
+  .carousel-wrapper { position: relative; overflow: hidden; }
+  .carousel-track {
+    display: flex;
+    gap: 28px;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+  .testimonial-card {
+    background: var(--beige);
+    padding: 48px 44px;
+    flex: 0 0 calc(50% - 14px);
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem;
+    line-height: 1;
+    color: rgba(201,166,107,0.2);
+    position: absolute;
+    top: 12px; left: 24px;
+  }
+  .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 20px; }
+  .testimonial-card blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--brown);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .testimonial-author {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .author-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--taupe));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+  .author-name { font-size: 0.85rem; font-weight: 500; color: var(--brown); letter-spacing: 0.05em; }
+  .author-tag { font-size: 0.75rem; color: var(--taupe); }
+  .carousel-controls {
+    display: flex; justify-content: center; align-items: center; gap: 20px; margin-top: 48px;
+  }
+  .carousel-btn {
+    width: 48px; height: 48px;
+    border: 1px solid var(--sand);
+    background: transparent;
+    color: var(--taupe);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+  }
+  .carousel-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+  .carousel-dots { display: flex; gap: 8px; }
+  .carousel-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--sand);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    padding: 0;
+  }
+  .carousel-dot.active { background: var(--gold); width: 24px; border-radius: 4px; }
+
+  /* ── GALLERY ── */
+  #gallery { padding: 120px 0; background: var(--beige); }
+  .gallery-header { text-align: center; margin-bottom: 60px; }
+  .masonry-grid {
+    columns: 3 280px;
+    gap: 16px;
+  }
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+  .gallery-item img {
+    display: block; width: 100%;
+    transition: transform 0.7s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.06); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: rgba(46,31,24,0);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.4s ease;
+  }
+  .gallery-overlay svg { opacity: 0; transform: scale(0.7); transition: all 0.4s ease; color: var(--white); }
+  .gallery-item:hover .gallery-overlay { background: rgba(46,31,24,0.45); }
+  .gallery-item:hover .gallery-overlay svg { opacity: 1; transform: scale(1); }
+
+  /* Lightbox */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(20,12,8,0.95);
+    align-items: center; justify-content: center;
+    padding: 40px;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; }
+  .lightbox-close {
+    position: absolute; top: 24px; right: 24px;
+    background: none; border: 1px solid rgba(255,255,255,0.3);
+    color: var(--white); width: 44px; height: 44px;
+    font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+  }
+  .lightbox-close:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+
+  /* ── BOOKING ── */
+  #booking { padding: 120px 0; background: var(--white); }
+  .booking-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .booking-header { margin-bottom: 48px; }
+  .booking-header h2 { margin-bottom: 12px; }
+  .booking-header p { color: var(--text-light); font-size: 0.92rem; }
+  .booking-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-group label {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--taupe); font-weight: 400;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    border: 1px solid var(--sand);
+    background: var(--beige);
+    padding: 14px 18px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    -webkit-appearance: none;
+    border-radius: var(--radius);
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+  .form-group textarea { height: 110px; resize: vertical; }
+  .form-group select option { background: var(--beige); }
+  .btn-submit {
+    background: var(--brown);
+    color: var(--beige);
+    border: none;
+    padding: 18px 48px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    cursor: pointer;
+    align-self: flex-start;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-submit::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: var(--gold);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+  .btn-submit:hover::before { transform: translateX(0); }
+  .btn-submit span { position: relative; z-index: 1; }
+  .btn-submit:hover { color: var(--dark); }
+
+  .contact-info { padding-top: 12px; }
+  .contact-info h3 { font-size: 1.6rem; color: var(--brown); margin-bottom: 32px; }
+  .contact-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    margin-bottom: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(200, 216, 196, 0.45);
+  }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: var(--beige);
+    border: 1px solid var(--sand);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold);
+  }
+  .contact-item h4 { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--taupe); margin-bottom: 6px; font-family: 'Jost', sans-serif; font-weight: 400; }
+  .contact-item p { color: var(--text); font-size: 0.92rem; line-height: 1.7; }
+  .contact-item a { color: var(--gold); text-decoration: none; }
+  .contact-item a:hover { text-decoration: underline; }
+
+  /* ── FINAL CTA ── */
+  #cta-final {
+    padding: 120px 40px;
+    text-align: center;
+    background:
+      linear-gradient(rgba(18,40,15,0.80), rgba(18,40,15,0.80)),
+      url('https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=1600&q=80') center/cover no-repeat fixed;
+    position: relative;
+  }
+  #cta-final h2 { font-size: clamp(2.4rem, 5vw, 4rem); color: var(--beige); margin-bottom: 20px; }
+  #cta-final p { color: rgba(217,199,184,0.8); max-width: 560px; margin: 0 auto 44px; font-size: 1rem; line-height: 1.9; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111E0F;
+    padding: 80px 0 0;
+    color: rgba(200,216,196,0.7);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(123,175,110,0.15);
+  }
+  .footer-brand .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    color: #E8F2E6;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .footer-brand .brand-name span { color: var(--gold); }
+  .footer-brand p { font-size: 0.85rem; line-height: 1.9; margin-bottom: 28px; }
+  .social-icons { display: flex; gap: 12px; }
+  .social-icon {
+    width: 38px; height: 38px;
+    border: 1px solid rgba(123,175,110,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(200,216,196,0.6);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border-radius: 50%;
+  }
+  .social-icon:hover { background: var(--gold); border-color: var(--gold); color: var(--dark); }
+  .footer-col h4 {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    font-weight: 400;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul a {
+    color: rgba(200,216,196,0.65);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s;
+  }
+  .footer-col ul a:hover { color: var(--gold); }
+  .footer-col address { font-style: normal; font-size: 0.85rem; line-height: 1.9; }
+  .footer-bottom {
+    padding: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-bottom p { font-size: 0.75rem; color: rgba(200,216,196,0.4); }
+  .footer-bottom-links { display: flex; gap: 24px; }
+  .footer-bottom-links a { font-size: 0.75rem; color: rgba(200,216,196,0.4); text-decoration: none; transition: color 0.3s; }
+  .footer-bottom-links a:hover { color: var(--gold); }
+
+  /* ── SCROLL TO TOP ── */
+  .scroll-top {
+    position: fixed; bottom: 32px; right: 32px;
+    width: 48px; height: 48px;
+    background: var(--gold);
+    color: var(--dark);
+    border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; visibility: hidden;
+    transform: translateY(12px);
+    transition: all 0.4s ease;
+    z-index: 900;
+    border-radius: 50%;
+  }
+  .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+  .scroll-top:hover { background: var(--gold-light); transform: translateY(-3px); }
+
+  /* ── FORM SUCCESS ── */
+  .form-success {
+    display: none;
+    background: linear-gradient(135deg, rgba(201,166,107,0.15), rgba(201,166,107,0.05));
+    border: 1px solid rgba(201,166,107,0.4);
+    padding: 32px;
+    text-align: center;
+    margin-top: 16px;
+  }
+  .form-success.show { display: block; }
+  .form-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: var(--brown); margin-bottom: 8px; }
+  .form-success p { color: var(--taupe); font-size: 0.9rem; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .why-us-grid { grid-template-columns: 1fr; gap: 52px; }
+    .why-us-image { height: 420px; }
+    .testimonial-card { flex: 0 0 calc(80% - 14px); }
+    .booking-grid { grid-template-columns: 1fr; gap: 52px; }
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    nav { padding: 0 24px; }
+    .nav-links, .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .intro-strip { gap: 28px; padding: 24px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: repeat(2, 1fr); }
+    .testimonial-card { flex: 0 0 calc(90% - 14px); }
+    .masonry-grid { columns: 2 200px; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .why-us-image::after { display: none; }
+    .mobile-menu { padding: 28px 24px 36px; }
+    #cta-final { padding: 80px 24px; background-attachment: scroll; }
+  }
+
+  @media (max-width: 480px) {
+    .benefits-grid { grid-template-columns: 1fr; }
+    .masonry-grid { columns: 1; }
+    .hero-btns { flex-direction: column; align-items: center; }
+    .btn-primary, .btn-secondary { width: 100%; text-align: center; max-width: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Tyra<span>Place</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#benefits">Benefits</a></li>
+    <li><a href="#why-us">About</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">Book Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#services" class="mobile-link">Services</a>
+  <a href="#benefits" class="mobile-link">Benefits</a>
+  <a href="#why-us" class="mobile-link">About</a>
+  <a href="#testimonials" class="mobile-link">Reviews</a>
+  <a href="#gallery" class="mobile-link">Gallery</a>
+  <a href="#booking" class="mobile-link">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Professional Massage Therapy</p>
+    <h1 class="hero-title">Relax, <em>Restore</em>,<br>Rejuvenate</h1>
+    <p class="hero-subtitle">Experience professional therapeutic massage services designed to relieve stress, ease tension, and promote total wellness in a peaceful, private environment.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">Book Your Session</a>
+      <a href="#services" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-item">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <p>Licensed Therapist</p>
+  </div>
+  <div class="intro-item">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+    <p>Private Studio</p>
+  </div>
+  <div class="intro-item">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+    <p>Flexible Hours</p>
+  </div>
+  <div class="intro-item">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+    <p>Client-Focused Care</p>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-header fade-up">
+      <span class="section-label">What We Offer</span>
+      <h2>Our Massage Services</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card fade-up" style="transition-delay:0.1s">
+        <span class="service-number">01</span>
+        <div class="service-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19c0 0 2.18.5 4.18-.17M15 12c3.3 3.3 2.5 7.5 2.5 7.5S12.5 20 9 17c-2.1-1.8-3-4.3-2.5-6.5"/><path d="M12 4c0 0 3 2 3 6s-3 6-3 6"/></svg>
+        </div>
+        <h3>Deep Tissue<br>Massage</h3>
+        <p>Target muscle tension, chronic pain, athletic recovery, and mobility improvement through focused therapeutic techniques that work deep into muscle layers.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.2s">
+        <span class="service-number">02</span>
+        <div class="service-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        </div>
+        <h3>Swedish<br>Massage</h3>
+        <p>A gentle and relaxing massage designed to reduce stress, improve circulation, and promote overall wellness through smooth, flowing strokes and kneading techniques.</p>
+      </div>
+      <div class="service-card fade-up" style="transition-delay:0.3s">
+        <span class="service-number">03</span>
+        <div class="service-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Relaxation<br>Massage</h3>
+        <p>A soothing full-body experience focused on comfort, tranquility, and complete mental and physical relaxation in a serene, private sanctuary.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <div class="container">
+    <div class="benefits-header fade-up">
+      <span class="section-label">Therapeutic Advantages</span>
+      <h2>Benefits of Massage Therapy</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-item fade-up" style="transition-delay:0.05s">
+        <span class="benefit-icon">🌿</span>
+        <h4>Stress Reduction</h4>
+        <p>Calm the nervous system and melt away daily tension</p>
+      </div>
+      <div class="benefit-item fade-up" style="transition-delay:0.1s">
+        <span class="benefit-icon">🩸</span>
+        <h4>Improved Circulation</h4>
+        <p>Enhance blood flow and oxygen delivery throughout the body</p>
+      </div>
+      <div class="benefit-item fade-up" style="transition-delay:0.15s">
+        <span class="benefit-icon">💪</span>
+        <h4>Muscle Recovery</h4>
+        <p>Accelerate healing and reduce post-activity soreness</p>
+      </div>
+      <div class="benefit-item fade-up" style="transition-delay:0.2s">
+        <span class="benefit-icon">🌙</span>
+        <h4>Better Sleep Quality</h4>
+        <p>Promote deeper, more restorative and peaceful sleep</p>
+      </div>
+      <div class="benefit-item fade-up" style="transition-delay:0.25s">
+        <span class="benefit-icon">✨</span>
+        <h4>Enhanced Wellness</h4>
+        <p>Support overall physical and emotional wellbeing</p>
+      </div>
+      <div class="benefit-item fade-up" style="transition-delay:0.3s">
+        <span class="benefit-icon">🤸</span>
+        <h4>Increased Flexibility</h4>
+        <p>Improve range of motion and joint mobility naturally</p>
+      </div>
+      <div class="benefit-item fade-up" style="transition-delay:0.35s">
+        <span class="benefit-icon">⚡</span>
+        <h4>Reduced Tension</h4>
+        <p>Release chronic tightness and restore muscular balance</p>
+      </div>
+      <div class="benefit-item fade-up" style="transition-delay:0.4s">
+        <span class="benefit-icon">🧠</span>
+        <h4>Mental Clarity</h4>
+        <p>Clear mental fog and restore focus and mental alertness</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why-us">
+  <div class="container">
+    <div class="why-us-grid">
+      <div class="why-us-image fade-up">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=80" alt="Tyra Place massage therapy studio interior" loading="lazy">
+      </div>
+      <div class="why-us-content fade-up" style="transition-delay:0.15s">
+        <span class="section-label">Our Commitment</span>
+        <h2>Why Clients Choose Tyra Place</h2>
+        <p>We believe every person deserves a truly restorative experience — one that honors your individual needs and leaves you feeling completely renewed. Our studio is designed around your comfort and wellbeing.</p>
+        <ul class="why-features">
+          <li class="why-feature">
+            <div class="feature-check">✓</div>
+            <p><strong>Experienced Professional Therapist</strong> — Certified, skilled, and dedicated to your therapeutic outcomes.</p>
+          </li>
+          <li class="why-feature">
+            <div class="feature-check">✓</div>
+            <p><strong>Clean, Private & Comfortable Environment</strong> — A sanctuary designed for complete privacy and peace.</p>
+          </li>
+          <li class="why-feature">
+            <div class="feature-check">✓</div>
+            <p><strong>Flexible Scheduling</strong> — Morning, evening, and weekend appointments to fit your life.</p>
+          </li>
+          <li class="why-feature">
+            <div class="feature-check">✓</div>
+            <p><strong>Personalized Treatment Plans</strong> — Every session tailored to your unique needs and goals.</p>
+          </li>
+          <li class="why-feature">
+            <div class="feature-check">✓</div>
+            <p><strong>Relaxing Luxury Atmosphere</strong> — Curated ambiance that begins your relaxation the moment you arrive.</p>
+          </li>
+          <li class="why-feature">
+            <div class="feature-check">✓</div>
+            <p><strong>Client-Focused Care</strong> — Your comfort, preferences, and wellbeing guide every decision.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="testimonials-header fade-up">
+      <span class="section-label">Client Experiences</span>
+      <h2>What Our Clients Say</h2>
+    </div>
+    <div class="carousel-wrapper fade-up" style="transition-delay:0.1s">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"One of the most relaxing and professional massage experiences I've ever had. I left feeling completely refreshed and renewed."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">S</div>
+            <div>
+              <div class="author-name">Sarah M.</div>
+              <div class="author-tag">Verified Client</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"The attention to detail and calming environment made all the difference. Highly recommended for anyone needing true relaxation."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">J</div>
+            <div>
+              <div class="author-name">Jessica R.</div>
+              <div class="author-tag">Verified Client</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"Excellent deep tissue work. My muscle tension improved dramatically after just one session. I'm already booked for my next visit."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">M</div>
+            <div>
+              <div class="author-name">Michael T.</div>
+              <div class="author-tag">Verified Client</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>"A beautiful space with exceptional service. I always leave feeling renewed, refreshed, and ready to take on the world."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <div class="author-name">Amanda K.</div>
+              <div class="author-tag">Verified Client</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="carousel-btn" id="prevBtn" aria-label="Previous">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="carousel-dots" id="carouselDots"></div>
+      <button class="carousel-btn" id="nextBtn" aria-label="Next">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-header fade-up">
+      <span class="section-label">Our Studio</span>
+      <h2>Wellness Gallery</h2>
+    </div>
+    <div class="masonry-grid fade-up" style="transition-delay:0.1s">
+      <div class="gallery-item" data-src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1200&q=85">
+        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&q=75" alt="Spa treatment room" loading="lazy">
+        <div class="gallery-overlay"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=1200&q=85">
+        <img src="https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=600&q=75" alt="Candles and spa decor" loading="lazy">
+        <div class="gallery-overlay"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=85">
+        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=600&q=75" alt="Relaxation room" loading="lazy">
+        <div class="gallery-overlay"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1200&q=85">
+        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=75" alt="Essential oils" loading="lazy">
+        <div class="gallery-overlay"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=1200&q=85">
+        <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=75" alt="Wellness products" loading="lazy">
+        <div class="gallery-overlay"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+      </div>
+      <div class="gallery-item" data-src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1200&q=85">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=75" alt="Massage therapy session" loading="lazy">
+        <div class="gallery-overlay"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <img id="lightboxImg" src="" alt="Gallery image">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+</div>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="container">
+    <div class="booking-grid">
+      <div>
+        <div class="booking-header fade-up">
+          <span class="section-label">Reserve Your Spot</span>
+          <h2>Book Your Session</h2>
+          <p>Fill out the form below and we'll confirm your appointment within 24 hours.</p>
+        </div>
+        <form class="booking-form fade-up" id="bookingForm" style="transition-delay:0.1s" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="service">Preferred Service</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option value="deep-tissue">Deep Tissue Massage</option>
+                <option value="swedish">Swedish Massage</option>
+                <option value="relaxation">Relaxation Massage</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="date">Preferred Date</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+              <label for="time">Preferred Time</label>
+              <select id="time" name="time">
+                <option value="">Select a time</option>
+                <option value="9am">9:00 AM</option>
+                <option value="10am">10:00 AM</option>
+                <option value="11am">11:00 AM</option>
+                <option value="12pm">12:00 PM</option>
+                <option value="1pm">1:00 PM</option>
+                <option value="2pm">2:00 PM</option>
+                <option value="3pm">3:00 PM</option>
+                <option value="4pm">4:00 PM</option>
+                <option value="5pm">5:00 PM</option>
+                <option value="6pm">6:00 PM</option>
+                <option value="7pm">7:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="notes">Notes or Special Requests</label>
+            <textarea id="notes" name="notes" placeholder="Any areas of concern, allergies, or special requests..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit"><span>Book Appointment</span></button>
+          <div class="form-success" id="formSuccess">
+            <h4>Thank you for booking!</h4>
+            <p>We've received your request and will confirm your appointment within 24 hours.</p>
+          </div>
+        </form>
+      </div>
+      <div class="contact-info fade-up" style="transition-delay:0.2s">
+        <h3>Get in Touch</h3>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          </div>
+          <div>
+            <h4>Phone</h4>
+            <p><a href="tel:5551234567">(555) 123-4567</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>
+            <h4>Email</h4>
+            <p><a href="mailto:info@tyraplace.com">info@tyraplace.com</a></p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>
+              Monday – Friday: 9:00 AM – 8:00 PM<br>
+              Saturday: 10:00 AM – 6:00 PM<br>
+              Sunday: By Appointment
+            </p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <div>
+            <h4>Location</h4>
+            <p>Private studio address provided<br>upon booking confirmation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="cta-final">
+  <div class="fade-up">
+    <span class="section-label" style="color:var(--gold-light)">Start Your Journey</span>
+    <h2>Ready to Relax<br>and Recharge?</h2>
+    <p>Schedule your session today and experience professional therapeutic massage services tailored to your unique wellness goals.</p>
+    <a href="#booking" class="btn-primary">Book Your Session</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="brand-name">Tyra<span>Place</span></span>
+        <p>A professional massage therapy studio dedicated to your relaxation, restoration, and total wellness. Experience the difference of truly personalized therapeutic care.</p>
+        <div class="social-icons">
+          <a href="#" class="social-icon" aria-label="Instagram">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Facebook">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="TikTok">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.79 1.52V6.75a4.85 4.85 0 01-1.02-.06z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#why-us">About Us</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#booking">Book Now</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Deep Tissue Massage</a></li>
+          <li><a href="#services">Swedish Massage</a></li>
+          <li><a href="#services">Relaxation Massage</a></li>
+          <li><a href="#booking">Custom Sessions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <address>
+          <p style="margin-bottom:8px">(555) 123-4567</p>
+          <p style="margin-bottom:8px"><a href="mailto:info@tyraplace.com" style="color:rgba(200,216,196,0.65);text-decoration:none">info@tyraplace.com</a></p>
+          <p style="font-size:0.82rem;line-height:1.8;margin-top:16px">Mon–Fri: 9AM – 8PM<br>Sat: 10AM – 6PM<br>Sun: By Appointment</p>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Tyra Place. All rights reserved. Designed with care for your wellness.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">
+  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+</button>
+
+<script>
+// ── NAV ──
+const navbar = document.getElementById('navbar');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  document.getElementById('scrollTop').classList.toggle('visible', window.scrollY > 400);
+});
+
+hamburger.addEventListener('click', () => {
+  const open = hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+  mobileMenu.classList.toggle('open', open);
+});
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('open');
+  });
+});
+
+// ── SCROLL ANIMATIONS ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── CAROUSEL ──
+const track = document.getElementById('carouselTrack');
+const cards = track.querySelectorAll('.testimonial-card');
+const dotsContainer = document.getElementById('carouselDots');
+let currentIdx = 0;
+let autoTimer;
+
+function getVisible() {
+  return window.innerWidth <= 768 ? 1 : 2;
+}
+const totalSlides = cards.length;
+
+// build dots
+cards.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+  dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+  dot.addEventListener('click', () => goTo(i));
+  dotsContainer.appendChild(dot);
+});
+
+function goTo(idx) {
+  const visible = getVisible();
+  const max = totalSlides - visible;
+  currentIdx = Math.max(0, Math.min(idx, max));
+  const cardW = cards[0].offsetWidth + 28;
+  track.style.transform = `translateX(-${currentIdx * cardW}px)`;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => d.classList.toggle('active', i === currentIdx));
+  resetAuto();
+}
+
+function resetAuto() {
+  clearInterval(autoTimer);
+  autoTimer = setInterval(() => {
+    const visible = getVisible();
+    const max = totalSlides - visible;
+    goTo(currentIdx >= max ? 0 : currentIdx + 1);
+  }, 5000);
+}
+
+document.getElementById('prevBtn').addEventListener('click', () => goTo(currentIdx - 1));
+document.getElementById('nextBtn').addEventListener('click', () => {
+  const visible = getVisible();
+  goTo(currentIdx >= totalSlides - visible ? 0 : currentIdx + 1);
+});
+
+resetAuto();
+window.addEventListener('resize', () => goTo(currentIdx));
+
+// ── GALLERY LIGHTBOX ──
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+
+document.querySelectorAll('.gallery-item').forEach(item => {
+  item.addEventListener('click', () => {
+    lightboxImg.src = item.dataset.src;
+    lightboxImg.alt = item.querySelector('img').alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ── BOOKING FORM ──
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.btn-submit');
+  btn.disabled = true;
+  btn.querySelector('span').textContent = 'Sending…';
+  setTimeout(() => {
+    document.getElementById('formSuccess').classList.add('show');
+    btn.querySelector('span').textContent = 'Sent!';
+    this.reset();
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.querySelector('span').textContent = 'Book Appointment';
+      document.getElementById('formSuccess').classList.remove('show');
+    }, 6000);
+  }, 1200);
+});
+
+// ── SCROLL TO TOP ──
+document.getElementById('scrollTop').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ── SET MIN DATE ──
+const dateInput = document.getElementById('date');
+if (dateInput) {
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.min = today;
+}
+</script>
+</body>
+</html>
